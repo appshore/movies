@@ -19,7 +19,7 @@ describe('As a Movie Reviewer I want to be able to find movies by release date, 
   describe('when finding a movie by directors name', function () {
     it('should provide a list of movies for that director.', function() {
       var locatorService = new MovieReview.MovieLocatorService(movie_test_data);
-      var expectedResult = [movie_test_data[0], movie_test_data[2]];
+      var expectedResult = [movie_test_data[0], movie_test_data[3]];  // was expected wrong movie[2]
       
       expect(locatorService.findByDirector('Michelle S. Smith')).toEqual(expectedResult);
     });
