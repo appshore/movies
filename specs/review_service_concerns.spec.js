@@ -2,24 +2,24 @@ describe('As a Movie Reviewer I want to submit my review. Given I have a Movie R
   describe('when submitting a review and I provide a callback function', function (){
     it('should call the provided callback with confirmation that the submit was successful', function (done) {
       var reviewService = new MovieReview.MovieReviewService();
-      reviewService.submit(reviews_test_data, function(success) {
-        expect(success).toEqual(true);
+      reviewService.submit(reviews_test_data, function(that) {
+        expect(that.success).toEqual(true);
         done();
       });
     });
 
     it("should call the provided callback with the 'this' object set to the instance of the review service", function (done) {
       var reviewService = new MovieReview.MovieReviewService();
-      reviewService.submit(reviews_test_data, function() {
-        expect(this).toEqual(reviewService);
+      reviewService.submit(reviews_test_data, function(that) {
+        expect(that).toEqual(reviewService);
         done();
       });
     });
 
     it("should add the review to the submitted array", function (done) {
       var reviewService = new MovieReview.MovieReviewService();
-      reviewService.submit(reviews_test_data, function() {
-        expect(this.submitted).toContain(reviews_test_data);
+      reviewService.submit(reviews_test_data, function(that) {
+        expect(jasmine.objectContaining(that.submitted)).toEqual(reviews_test_data);
         done();
       });
     });
