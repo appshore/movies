@@ -1,6 +1,13 @@
+How to run
+----------
 
-Technical Competency - Javascript
-=================================
+To run the client the easiest way is to install the serve package which serves static files apps.
+
+```
+$ npm -g install serve
+$ cd client
+$ serve
+```
 
 Movie Reviews
 -------------
