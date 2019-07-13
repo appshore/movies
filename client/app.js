@@ -5,7 +5,7 @@ app.controller('MyMoviesController', [
   '$http',
   function($scope, $http) {
     $scope.movies = [];
-    $scope.moviesList = [];
+    $scope.mlist = [];
     $scope.genres = [
       'All Movies',
       'Action',
@@ -19,24 +19,35 @@ app.controller('MyMoviesController', [
       'Thriller'
     ];
     $scope.selectedGenre = $scope.genres[0];
+    $scope.moviesByCast = [];
+    $scope.selectedCast = '';
 
     $scope.filterByGenre = genre => {
       $scope.movies =
         genre === 'All Movies'
-          ? $scope.moviesList
-          : $scope.moviesList.filter(m => m.genres.includes(genre));
+          ? $scope.mlist
+          : $scope.mlist.filter(m => m.genres.includes(genre));
       $scope.selectedGenre = genre;
       $scope.$broadcast('newGenre');
+    };
+
+    $scope.getMoviesByCast = cast => {
+      if( $scope.selectedCast === cast ) {
+        $scope.selectedCast = '';
+      } else {
+        $scope.moviesByCast = $scope.mlist.filter(m => m.cast.includes(cast));
+        $scope.selectedCast = cast;
+      }
     };
 
     $scope.loaded = false;
 
     $scope.load = () => {
       $http
-        .get('movies2.json')
+        .get('movies.json')
         .then(response => response.data.sort((a, b) => b.year - a.year))
         .then(movies => {
-          $scope.moviesList = movies;
+          $scope.mlist = movies;
           $scope.movies = movies;
           $scope.loaded = true;
         });

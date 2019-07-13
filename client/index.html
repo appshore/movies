@@ -45,10 +45,15 @@
         <section ng-cloak="" ng-show="loaded">
           <div ng-repeat="movie in movies">
             <div>{{ movie.title }} ({{ movie.year }})</div>
-            <span ng-repeat="cast in movie.cast track by $index">
-              <span class="cast">{{ cast }}</span
-              >&nbsp;
-            </span>
+            <ul ng-repeat="cast in movie.cast track by $index">
+              <li class="cast" ng-click="getMoviesByCast(cast)">{{ cast }}
+                <ul class="castMovies" ng-show="cast === selectedCast">
+                  <li ng-repeat="movieByCast in moviesByCast">
+                    {{ movieByCast.title }}
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </section>
       </section>
