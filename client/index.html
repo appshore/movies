@@ -1,21 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html ng-app="MyMovieDBApp">
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
-        <script src="app.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <title>My Movie DB</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="container">
-            <h1><img src="images/noun_Film_8085.png" height="64" width="64">My Movie DB</h1>
-            <section ng-controller="MyMoviesController">
-                <div ng-repeat="movie in movies">
-                    <span>{{movie.title}} ({{movie.year}})</span>
-                </div>
-            </section>
-        </div>
-    </body>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.js"></script>
+    <script src="app.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>My Movie DB</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+
+      <h1>
+        <img src="images/noun_Film_8085.png" height="64" width="64" />My Movie
+        DB
+      </h1>
+
+      <section ng-controller="MyMoviesController">
+        <section ng-controller="BannerController">
+          <div class="banner">
+            <img class="bannerImg" ng-src="/images/posters/{{banner.poster}}">
+              <span class="bannerTxt">{{ banner.film }}</span>
+            </img>
+          </div>
+        </section>
+        <section class="spinner" ng-hide="loaded"></section>
+        <section ng-cloak="" ng-show="loaded">
+          <span class="genre" ng-repeat="genre in genres">
+            <span ng-click="filterByGenre(genre)">{{ genre }}</span
+            >&nbsp;
+          </span>
+        </section>
+        <section ng-cloak="" ng-show="loaded">
+          <h3 >{{ selectedGenre }}</h3>
+        </section>
+        <section ng-cloak="" ng-show="loaded">
+          <div ng-repeat="movie in movies">
+            <div>{{ movie.title }} ({{ movie.year }})</div>
+            <span ng-repeat="cast in movie.cast track by $index">
+              <span class="cast">{{ cast }}</span
+              >&nbsp;
+            </span>
+          </div>
+        </section>
+      </section>
+    </div>
+  </body>
 </html>
