@@ -6,6 +6,10 @@ section {
   margin-top: 10px;
 }
 
+ul {
+  margin: 0px;
+}
+
 .banner {
   height: 250px;
   width: 970px;
@@ -23,7 +27,13 @@ section {
 
 .cast {
   color: lightsalmon;
+  cursor: pointer;
   font-size: smaller;
+}
+
+.castMovies {
+  color: lightslategray;
+  cursor: default;
 }
 
 .genre {
