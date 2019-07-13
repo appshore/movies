@@ -1,3 +1,74 @@
 label input {
-    margin: 0 4px;
+  margin: 0 4px;
+}
+
+section {
+  margin-top: 10px;
+}
+
+.banner {
+  height: 250px;
+  width: 970px;
+}
+
+.bannerImg {
+  height: 250px;
+}
+
+.bannerTxt {
+  color: lightskyblue;
+  font-size: x-large;
+  margin-left: 20px;
+}
+
+.cast {
+  color: lightsalmon;
+  font-size: smaller;
+}
+
+.genre {
+  color: lightseagreen;
+  cursor: pointer;
+  font-size: larger;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotate360 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  display: inline-block;
+  border-radius: 50px;
+  border-style: solid;
+  border-bottom-color: lightsalmon;
+  border-top-color: lightseagreen;
+  border-left-color: lightskyblue;
+  border-right-color: yellow;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  animation: rotate360 1s linear infinite;
+  -webkit-animation: rotate360 1s linear infinite;
+
+  border-width: 8px;
+  width: 48px;
+  height: 48px;
 }
